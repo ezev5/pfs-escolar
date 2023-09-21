@@ -13,7 +13,7 @@ import { ClaseModule } from './clase/clase.module';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3306,
+      port: 3310,
       username: 'admin',
       password: 'Admin123',
       database: 'escolar',

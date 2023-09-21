@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { ClaseService } from './clase.service';
 import { CreateClaseDto } from './dto/create-clase.dto';
 import { UpdateClaseDto } from './dto/update-clase.dto';
@@ -18,13 +18,13 @@ export class ClaseController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.claseService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.claseService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClaseDto: UpdateClaseDto) {
-    return this.claseService.update(+id, updateClaseDto);
+  update(@Param('id') id: number, @Body() updateClaseDto: UpdateClaseDto) {
+    return this.claseService.update(id, updateClaseDto);
   }
 
   @Delete(':id')
